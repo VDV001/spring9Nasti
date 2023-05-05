@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html xmlns:sec="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Главная</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <link rel="stylesheet" type="text/css" href="./css/style.css">
+</head>
+<body>
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+      <h3>${pageContext.request.userPrincipal.name}</h3>
+      <sec:authorize access="!isAuthenticated()">
+        <h4><a class="nav-link" href="/login">Войти</a></h4>
+        <h4><a class="nav-link" href="/registration">Зарегистрироваться</a></h4>
+      </sec:authorize>
+      <sec:authorize access="isAuthenticated()">
+        <h4><a class="nav-link" href="/logout">Выйти</a></h4>
+      </sec:authorize>
+      <h4><a class="nav-link" href="/news">Новости (только пользователь)</a></h4>
+      <h4><a class="nav-link" href="/LevelTable">Таблица Levels (только админ)</a></h4>
+      <h4><a class="nav-link" href="/RegionTable">Таблица Regions (только пользователь)</a></h4>
+      <h4><a class="nav-link" href="/admin">Пользователи (только админ)</a></h4>
+    </div>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
